@@ -74,19 +74,19 @@ export default function App() {
       // Ignore if document.title is sandboxed
     }
     
-    const enforceHash = () => {
+    const enforcePathname = () => {
       try {
-        if (typeof window !== "undefined" && window.location && window.history && window.history.replaceState && window.location.hash !== "#/student_marksheet") {
-          window.history.replaceState(null, "", "#/student_marksheet");
+        if (typeof window !== "undefined" && window.location && window.history && window.history.replaceState && window.location.pathname !== "/student_marksheet") {
+          window.history.replaceState(null, "", "/student_marksheet");
         }
       } catch (e) {
         // Safe fallback if history.replaceState is blocked by iframe sandbox restrictions
       }
     };
     
-    enforceHash();
+    enforcePathname();
     try {
-      window.addEventListener("hashchange", enforceHash);
+      window.addEventListener("popstate", enforcePathname);
     } catch (e) {
       // Safe fallback if addEventListener is restricted
     }
@@ -98,7 +98,7 @@ export default function App() {
         // safe fallback
       }
       try {
-        window.removeEventListener("hashchange", enforceHash);
+        window.removeEventListener("popstate", enforcePathname);
       } catch (e) {
         // Safe fallback
       }
