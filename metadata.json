@@ -1,0 +1,6 @@
+{
+  "name": "National Demo University Result Portal",
+  "description": "Fictional academic results verification system for National Demo University with integrated demo capabilities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
